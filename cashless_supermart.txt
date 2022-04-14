@@ -1,0 +1,66 @@
+print( " ----CASHLESS SUPERMARKET---- ")
+
+dict_scanned_items = {}
+num = int(input("enter no of items you want to buy: "))
+dict_scanned_items = dict(input().split() for x in range(num))
+for keys in dict_scanned_items:
+    dict_scanned_items[keys]=int(dict_scanned_items[keys])
+print(dict_scanned_items)
+
+
+def returnSum(dict_scanned_items):
+     
+     sum = 0
+     for i in dict_scanned_items.values():
+           sum = sum + i
+      
+     return sum
+ 
+print("CART TOTAL:", returnSum(dict_scanned_items))
+
+#ADDING OR REMOVNG ITEMS
+
+choice_add = input("do you want to add any item (yes or no) : ")
+if choice_add == "yes" :
+    added_items= {}
+    n=int(input("enter no of items you want to add: "))
+    added_items = [ map(str, input().split()) for x in range(n)]
+    dict_scanned_items.update(added_items)
+    for keys in dict_scanned_items:
+        dict_scanned_items[keys]=int(dict_scanned_items[keys])
+print(dict_scanned_items)
+
+choice_remove = input("do you want to remove any item (yes or no) : ")
+if choice_remove == "yes" :
+    key_to_delete = input("Enter the key to delete : ")
+    if key_to_delete in dict_scanned_items :
+        del dict_scanned_items[key_to_delete]
+    else :
+        print("please enter the item in your cart:")
+print( " " )
+print("Final list of the items in your cart: ")
+print(dict_scanned_items)
+print("CART TOTAL:", returnSum(dict_scanned_items))
+cart_total = returnSum(dict_scanned_items)
+
+#DISCOUNT
+
+if(cart_total>=1000 & cart_total<=2000):
+    #give discount of 5%
+    cart_total=cart_total-(cart_total*5/100)
+elif(cart_total>2000 & cart_total<=5000):
+    #give discount of 10%
+    cart_total=cart_total-(cart_total*10/100)
+print("CART TOTAL AFTER DISCOUNT:", cart_total)
+
+#PAYMENT
+
+card_amount=float(input("enter amount in your account : "))
+if(card_amount>=cart_total):
+    print("Transaction successfull!!!")
+elif(card_amount<cart_total):
+    credit_opt = input("Do you want to use credit option (yes or no) : ")
+    if credit_opt == "yes" :
+        print("Transaction successful!!!")
+    else :
+        print("Transactional failed!!!")
