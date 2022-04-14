@@ -1,0 +1,35 @@
+PSEUDO CODE 
+
+Set cart_total to zero
+Set cart_items to zero
+READ barcode of item:
+ADD items to cart_items
+While cart_items greater than 0
+	cart_total = cart_total+cart_item
+
+ADDING/REMOVING ITEMS
+
+If customer wants to add item
+READ barcode of item
+	cart_total = cart_total+cart_item
+If customer wants to remove item
+	cart_total = cart_total-cart_item
+
+DISCOUNT
+
+If cart_total is greater than or equal to 10000
+cart_total=cart_total-(cart_total*10/100)
+If cart_total is greater than 5000 and less than 10000
+	cart_total=cart_total-(cart_total*5/100)
+
+PAYMENT
+
+READ card
+If Card_amount is greater than cart_total
+	Perform payment
+	Print receipt
+If Card_amount is less than cart_total
+	Print you do not have enough money
+If customer wants to use credit_card
+	Perform payment
+	Print receipt
